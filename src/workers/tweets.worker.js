@@ -10,7 +10,7 @@ tweetQueue.on('ready', function () {
     axios
       .get(twitterSearchUrl, { params, headers })
       .then(function (response) {
-        done(null, response.data);
+        done(null, { tweets: response.data.data, taskId: job.id });
       })
       .catch(function (err) {
         done(err, null);

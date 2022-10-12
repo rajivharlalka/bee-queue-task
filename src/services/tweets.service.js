@@ -16,12 +16,21 @@ const saveTask = async (job) => {
   return task;
 };
 
+const updateTask = async (jobId, newTaskData) => {
+  const task = await tweetsTask.findOne({ job_id: jobId });
+  // eslint-disable-next-line no-param-reassign
+  if (newTaskData.status === 'succeeded') newTaskData.time_taken = new Date().getTime() - new Date(task.createdAt).getTime();
+  return task.updateOne(newTaskData);
+};
+
 const getTasks = async () => {
-  return tweetsTask.find();
+  const tasks = await tweetsTask.find();
+  return { tasks };
 };
 
 const getCompletedTasks = async () => {
-  return tweetsTask.find({ status: taskStatusTypes.SUCCEEDED });
+  const tasks = await tweetsTask.find({ status: taskStatusTypes.SUCCEEDED });
+  return { tasks };
 };
 
-module.exports = { createTask, saveTask, getTasks, getCompletedTasks };
+module.exports = { createTask, saveTask, getTasks, getCompletedTasks, updateTask };
