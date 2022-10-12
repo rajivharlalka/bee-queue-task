@@ -7,7 +7,15 @@ const catchAsync = require('../utils/catchAsync');
 const getTweets = catchAsync(async (req, res) => {
   const job = await tweetService.createTask(req.user.id);
   await tweetService.saveTask(job);
-  res.status(200).send({ message: job });
+
+  job.on('succeeded', (result) => {
+    console.log(job.id, result);
+    res.status(200).send({ message: result });
+  });
+
+  job.on('failed', (err) => {
+    res.status(401).send({ message: err.message });
+  });
 });
 
 const listTasks = catchAsync(async (req, res) => {
