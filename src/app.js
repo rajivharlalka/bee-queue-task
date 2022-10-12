@@ -13,7 +13,7 @@ const { authLimiter } = require('./middlewares/rateLimiter');
 const routes = require('./routes/v1');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
-const tweetQueue = require('./utils/Queue');
+require('./workers/tweets.worker');
 
 const app = express();
 
@@ -64,9 +64,5 @@ app.use(errorConverter);
 
 // handle error
 app.use(errorHandler);
-
-tweetQueue.process((job) => {
-  return job.data;
-});
 
 module.exports = app;
