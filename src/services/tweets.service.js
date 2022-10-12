@@ -23,8 +23,8 @@ const updateTask = async (jobId, newTaskData) => {
   return task.updateOne(newTaskData);
 };
 
-const getTasks = async () => {
-  const tasks = await tweetsTask.find();
+const getTasks = async (filter, options) => {
+  const tasks = await tweetsTask.paginate(filter, options);
   return { tasks };
 };
 

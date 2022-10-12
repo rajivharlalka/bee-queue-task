@@ -17,14 +17,3 @@ tweetQueue.on('ready', function () {
       });
   });
 });
-
-// tweetQueue.on('ready', function () {
-//   tweetQueue.process(function (job, done) {
-//     console.log('processing job ' + job.id);
-//     setTimeout(function () {
-//       done(null, job.data);
-//     }, 2000);
-//   });
-
-//   console.log('processing jobs...');
-// });

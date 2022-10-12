@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
-// const httpStatus = require('http-status');
 const httpStatus = require('http-status');
 const { tweetService } = require('../services');
+const pick = require('../utils/pick');
 const catchAsync = require('../utils/catchAsync');
 
 const getTweets = catchAsync(async (req, res) => {
@@ -22,7 +21,9 @@ const getTweets = catchAsync(async (req, res) => {
 });
 
 const listTasks = catchAsync(async (req, res) => {
-  const tasks = await tweetService.getTasks();
+  const filter = pick(req.query, ['job_id', 'status']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const tasks = await tweetService.getTasks(filter, options);
   res.status(httpStatus.OK).send(tasks);
 });
 
