@@ -5,14 +5,23 @@ const catchAsync = require('../utils/catchAsync');
 // const tweetQueue = require('../utils/Queue');
 
 const getTweets = catchAsync(async (req, res) => {
-  // eslint-disable-next-line no-console
-  // console.log(req, res, 'Hello world');
-  // const job = await tweetQueue.createJob({ message: req.user.email }).save();
-  const job = await tweetService.createTask(req.user.email);
-  console.log(job);
+  const job = await tweetService.createTask(req.user.id);
+  await tweetService.saveTask(job);
   res.status(200).send({ message: job });
+});
+
+const listTasks = catchAsync(async (req, res) => {
+  const tasks = await tweetService.getTasks();
+  res.status(200).send({ message: tasks });
+});
+
+const completedTasks = catchAsync(async (req, res) => {
+  const tasks = await tweetService.getCompletedTasks('SUCCEEDED');
+  res.status(200).send({ message: tasks });
 });
 
 module.exports = {
   getTweets,
+  listTasks,
+  completedTasks,
 };
