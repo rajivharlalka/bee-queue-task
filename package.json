@@ -1,14 +1,14 @@
 {
-  "name": "create-nodejs-express-app",
-  "version": "1.7.0",
-  "description": "Create a Node.js app for building production-ready RESTful APIs using Express, by running one command",
+  "name": "bee-queue-task",
+  "version": "0.0.1",
+  "description": "Node Backend that serves API requests usign a simple task queue",
   "bin": "bin/createNodejsApp.js",
   "main": "src/index.js",
-  "repository": "https://github.com/hagopj13/node-express-boilerplate.git",
-  "author": "Hagop Jamkojian <hagopj13@gmail.com>",
+  "repository": "https://github.com/rajivharlalka/bee-queue-task",
+  "author": "Rajiv Harlalka <rajivharlalka009@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "start": "pm2 start ecosystem.config.json --no-daemon",
@@ -70,6 +70,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "pm2": "^5.1.0",
+    "redis": "^4.3.1",
     "swagger-jsdoc": "^6.0.8",
     "swagger-ui-express": "^4.1.6",
     "validator": "^13.0.0",

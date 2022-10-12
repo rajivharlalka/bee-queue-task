@@ -19,6 +19,7 @@ const envVarsSchema = Joi.object()
       .default(10)
       .description('minutes after which verify email token expires'),
     TWITTER_BEARER_TOKEN: Joi.string().description('Bearer Token of Twitter Developer Account'),
+    REDIS_URL: Joi.string().description('Redis URL to connect to'),
   })
   .unknown();
 
@@ -47,4 +48,5 @@ module.exports = {
     verifyEmailExpirationMinutes: envVars.JWT_VERIFY_EMAIL_EXPIRATION_MINUTES,
   },
   bearer_token: envVars.TWITTER_BEARER_TOKEN,
+  redis: envVars.REDIS_URL,
 };
