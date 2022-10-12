@@ -28,7 +28,7 @@ const listTasks = catchAsync(async (req, res) => {
 });
 
 const completedTasks = catchAsync(async (req, res) => {
-  const tasks = await tweetService.getCompletedTasks('succeeded');
+  const tasks = await tweetService.getCompletedTasks('SUCCEEDED');
   res.status(httpStatus.OK).send(tasks);
 });
 

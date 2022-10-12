@@ -1,7 +1,8 @@
 const axios = require('axios');
 const config = require('../config/config');
-const searchHashtag = require('../config/tasks');
 const tweetQueue = require('../utils/Queue');
+
+const searchHashtag = '#Bangalore';
 
 const twitterSearchUrl = 'https://api.twitter.com/2/tweets/search/recent';
 const params = { query: searchHashtag };

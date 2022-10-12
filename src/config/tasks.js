@@ -7,7 +7,4 @@ const taskStatusTypes = {
   DELAYED: 'delayed',
 };
 
-const searchHashtag = '#Bangalore';
-
 module.exports = taskStatusTypes;
-module.exports = searchHashtag;

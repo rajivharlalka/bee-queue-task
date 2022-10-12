@@ -41,11 +41,12 @@ const tweetsTaskSchema = mongoose.Schema(
 // add plugin that converts mongoose to json
 tweetsTaskSchema.plugin(toJSON);
 
+// plugin to paginate data
 tweetsTaskSchema.plugin(paginate);
 
 /**
- * @typedef Token
+ * @typedef tweetsTask
  */
-const tweetsTask = mongoose.model('tweetsTask', tweetsTaskSchema);
+const tweetsTask = mongoose.model('TweetsTask', tweetsTaskSchema);
 
 module.exports = tweetsTask;
