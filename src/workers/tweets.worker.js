@@ -1,9 +1,11 @@
 const axios = require('axios');
+const config = require('../config/config');
+const searchHashtag = require('../config/tasks');
 const tweetQueue = require('../utils/Queue');
 
 const twitterSearchUrl = 'https://api.twitter.com/2/tweets/search/recent';
-const params = { query: '#Bangalore' };
-const headers = { Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}` };
+const params = { query: searchHashtag };
+const headers = { Authorization: `Bearer ${config.bearer_token}` };
 
 tweetQueue.on('ready', function () {
   tweetQueue.process(function (job, done) {
