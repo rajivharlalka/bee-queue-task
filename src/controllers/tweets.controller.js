@@ -8,7 +8,7 @@ const getTweets = catchAsync(async (req, res) => {
   await tweetService.saveTask(job);
 
   job.on('succeeded', async (result) => {
-    const newTaskData = { tweets_fetched: result.length, status: 'succeeded' };
+    const newTaskData = { tweets_fetched: result.tweets.length, status: 'succeeded' };
     await tweetService.updateTask(job.id, newTaskData);
     res.status(httpStatus.OK).send(result);
   });
